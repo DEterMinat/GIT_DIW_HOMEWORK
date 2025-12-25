@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Display greeting
+      run: echo "Hello from CI!"
+    - name: Check README
+      run: |
+        if [ -f README.md ]; then
+          echo "README.md exists"
+          cat README.md
+        else
+          echo "README.md not found"
+        fi
